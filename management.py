@@ -54,6 +54,9 @@ def main():
 
     client_socket = tcp_setup(server_name, server_port)
 
+    client_socket.close()
+    logging.info("Connection closed")
+
     # TODO: manager logic
 
 if __name__ == "__main__":
