@@ -1,6 +1,8 @@
 from socket import *
 import argparse
 import logging
+import hashlib
+import itertools, string
 
 def parse_args():
     # create parser
@@ -26,14 +28,22 @@ def tcp_setup(server_port):
 
     return server_socket
 
-def brute_force(start, stop, password):
+def brute_force(password):
     # start = string where we start the brute force search
     # stop = string where we stop the brute force search
     # password = the hashed password we want to crack
 
     # TODO: use md5-brute-force
+    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for chr in itertools.product(chars, 5):
+        guess = ''.join(chr)
+        found = guess
+        md5 = hashlib.md5()
+        md5.update(guess.encode('utf-8'))
+        if md5.hexdigest() == password:
+            print("\nFound string:", found)
 
-    return 0
+    return found
 
 def main():
     buffer_size = 64000 # max TCP msg size
@@ -51,7 +61,7 @@ def main():
 
     # parse message
 
-    brute_force(0,0,0)
+    brute_force(msg)
 
     connection_socket.close()
 
