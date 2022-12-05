@@ -18,6 +18,7 @@ def parse_args():
     # add arguments to the parser
     parser.add_argument("hostname_ip") # can be string or integer
     parser.add_argument("server_port")
+    parser.add_argument("hashed_pw") # hashed pw
 
     # parse the arguments
     args = parser.parse_args()
@@ -49,7 +50,7 @@ def main():
 
     # Command: python3 client.py csa1.bu.edu 58002
     # Command: python3 client.py localhost 58002
-    server_name, server_port = parse_args()
+    server_name, server_port, hashed_pw = parse_args()
 
 
     client_socket = tcp_setup(server_name, server_port)
