@@ -43,7 +43,9 @@ def brute_force(password):
         if md5.hexdigest() == password:
             print("\nFound string:", found)
 
-    return found
+            return found
+
+    return 0
 
 def main():
     buffer_size = 64000 # max TCP msg size
