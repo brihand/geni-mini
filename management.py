@@ -18,17 +18,18 @@ def parse_args():
     # add arguments to the parser
     parser.add_argument("server_port")
     parser.add_argument("hashed_pw") # hashed pw
+    parser.add_argument("num_nodes") # number of worker nodes used to crack
 
     # parse the arguments
     args = parser.parse_args()
     logging.info(args)
 
-    return int(args.server_port), args.hashed_pw
+    return int(args.server_port), args.hashed_pw, int(args.num_nodes)
 
 def tcp_setup(server_port):
     # Set up connection with the server
     server_socket = socket(AF_INET, SOCK_STREAM)
-    server_socket.bind(("172.17.2.1", server_port))
+    server_socket.bind(('localhost', server_port))
     #logging.info("[TCP Setup] Client connection attempted")
     server_socket.listen(10)
     return server_socket
@@ -50,19 +51,29 @@ def main():
 
     # Command: python3 client.py csa1.bu.edu 58002
     # Command: python3 client.py localhost 58002
-    server_port, hashed_pw = parse_args()
+    server_port, hashed_pw, num_nodes = parse_args()
 
 
     server_socket = tcp_setup(server_port)
-
+    count = 1
     while(True):
         connection_socket, addr = server_socket.accept()
         logging.info("New client (" + str(addr) + ") attached")
-        response = connection_socket.recv(1024)
-        if response == "ready":
-            connection_socket.send("594f803b380a41396ed63dca39503542")
-        else:
-            print("Found string:", response)
+        response = connection_socket.recv(1024).decode()
+        # if user wants multiple workers to crack the same password(evenly distributed)
+        if num_nodes > 1:
+            if count <= num_nodes:
+                if response == "ready":
+                    connection_socket.send((str(num_nodes) + str(count) + "594f803b380a41396ed63dca39503542").encode())
+                    count += 1
+                else:
+                    print("Found string:", response)
+        # if user wants only one worker to crack the whole password
+        elif num_nodes <= 1:
+            if response == "ready":
+                connection_socket.send("594f803b380a41396ed63dca39503542".encode())
+            else:
+                print("Found string:", response)
     server_socket.close()
     logging.info("Connection closed")
 
