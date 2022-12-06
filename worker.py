@@ -18,15 +18,14 @@ def parse_args():
     return args.server_port
 
 def tcp_setup(server_port):
-    server_socket = socket(AF_INET, SOCK_STREAM)
-    server_socket.bind(("", server_port))
-    server_socket.listen(1)
-    logging.info("The server is ready to receive")
+    client_socket = socket(AF_INET, SOCK_STREAM)
+    client_socket.connect(("172.17.2.1", server_port))
+    logging.info("The worker is ready to work")
 
     # connection_socket, addr = server_socket.accept()
     # logging.info("[TCP Setup] New client attached")
 
-    return server_socket
+    return client_socket
 
 def brute_force(password):
     # start = string where we start the brute force search
@@ -35,13 +34,13 @@ def brute_force(password):
 
     # TODO: use md5-brute-force
     chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    for chr in itertools.product(chars, 5):
+    for chr in itertools.product(chars, repeat=5):
         guess = ''.join(chr)
         found = guess
         md5 = hashlib.md5()
         md5.update(guess.encode('utf-8'))
         if md5.hexdigest() == password:
-            print("\nFound string:", found)
+            print("Found string:", found)
 
             return found
 
@@ -52,20 +51,20 @@ def main():
 
     # TODO: double check what command line args we want to parse
     server_port = parse_args() # parse command line args
-    server_socket = tcp_setup(server_port) # server socket setup
+    client_socket = tcp_setup(server_port) # server socket setup
     logging.info("Worker setup done")
 
-    connection_socket, addr = server_socket.accept()
-    logging.info("New client (" + str(addr) + ") attached")
+
 
     # receive input from the management service
-    msg = connection_socket.recv(buffer_size).decode()
+    msg = client_socket.recv(buffer_size).decode()
 
     # parse message
 
-    brute_force(msg)
+    client_socket.send(brute_force(msg))
 
-    connection_socket.close()
+
+    client_socket.close()
 
 if __name__ == "__main__":
     main()
