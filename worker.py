@@ -21,10 +21,13 @@ def tcp_setup(server_port):
     client_socket = socket(AF_INET, SOCK_STREAM)
     client_socket.connect(("172.17.2.1", server_port))
     logging.info("The worker is ready to work")
+    client_socket.send("ready")
+    return client_socket
 
-    # connection_socket, addr = server_socket.accept()
-    # logging.info("[TCP Setup] New client attached")
-
+def complete_task(server_port):
+    client_socket = socket(AF_INET, SOCK_STREAM)
+    client_socket.connect(("172.17.2.1", server_port))
+    logging.info("The worker has completed the work")
     return client_socket
 
 def brute_force(password):
@@ -51,20 +54,16 @@ def main():
 
     # TODO: double check what command line args we want to parse
     server_port = parse_args() # parse command line args
-    client_socket = tcp_setup(server_port) # server socket setup
-    logging.info("Worker setup done")
 
-
-
-    # receive input from the management service
-    msg = client_socket.recv(buffer_size).decode()
-
-    # parse message
-
-    client_socket.send(brute_force(msg))
-
-
-    client_socket.close()
+    while(True) :
+        client_socket = tcp_setup(server_port) # server socket setup
+        # receive input from the management service
+        msg = client_socket.recv(buffer_size).decode()
+        client_socket.close()
+        result = brute_force(msg)
+        client_socket = complete_task(server_port)
+        client_socket.send(result)
+        client_socket.close()
 
 if __name__ == "__main__":
     main()

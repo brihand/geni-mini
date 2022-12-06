@@ -55,11 +55,14 @@ def main():
 
     server_socket = tcp_setup(server_port)
 
-    connection_socket, addr = server_socket.accept()
-    logging.info("New client (" + str(addr) + ") attached")
-    connection_socket.send("594f803b380a41396ed63dca39503542")
-    result = connection_socket.recv(1024)
-    print(result)
+    while(True):
+        connection_socket, addr = server_socket.accept()
+        logging.info("New client (" + str(addr) + ") attached")
+        response = connection_socket.recv(1024)
+        if response == "ready":
+            connection_socket.send("594f803b380a41396ed63dca39503542")
+        else:
+            print("Found string:", response)
     server_socket.close()
     logging.info("Connection closed")
 
