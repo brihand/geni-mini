@@ -112,8 +112,7 @@ def main():
         # md5hash has 32 characters, if >32 then the user has input
         # TODO: When would len(msg) <= 32?
         if len(msg) > 32:
-            client_socket.close() # Why do we close the socket, then re-connect in complete_task? Can't we keep the socket open throughout?
-            print("here")
+            client_socket.close() # Why do we close the socket, then re-connect in the complete_task function? Can't we keep the socket open throughout?
             total_node = int(msg[0])
             seq_num = int(msg[1])
             result = brute_force_partial(total_node, seq_num, msg[2:])
