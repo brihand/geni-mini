@@ -49,10 +49,7 @@ def main():
     TPUT_MSG_SIZE = 1
     buffer_size = TPUT_MSG_SIZE + 10000
 
-    # Command: python3 client.py csa1.bu.edu 58002
-    # Command: python3 client.py localhost 58002
     server_port, hashed_pw, num_nodes = parse_args()
-
 
     server_socket = tcp_setup(server_port)
     count = 1
