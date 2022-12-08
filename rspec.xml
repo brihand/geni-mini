@@ -1,73 +1,302 @@
 <rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
-<node xmlns="http://www.geni.net/resources/rspec/3" client_id="manager">
-<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
-<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="default-vm"/>
-<services xmlns="http://www.geni.net/resources/rspec/3"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-19"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-21"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-23"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-25"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-27"/>
-</node>
-<node xmlns="http://www.geni.net/resources/rspec/3" client_id="worker5">
-<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
-<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="default-vm"/>
-<services xmlns="http://www.geni.net/resources/rspec/3"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-18"/>
-</node>
-<node xmlns="http://www.geni.net/resources/rspec/3" client_id="worker1">
-<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
-<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="default-vm"/>
-<services xmlns="http://www.geni.net/resources/rspec/3"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-20"/>
-</node>
-<node xmlns="http://www.geni.net/resources/rspec/3" client_id="worker2">
-<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
-<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="default-vm"/>
-<services xmlns="http://www.geni.net/resources/rspec/3"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-22"/>
-</node>
-<node xmlns="http://www.geni.net/resources/rspec/3" client_id="worker3">
-<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
-<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="default-vm"/>
-<services xmlns="http://www.geni.net/resources/rspec/3"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-24"/>
-</node>
-<node xmlns="http://www.geni.net/resources/rspec/3" client_id="worker4">
-<icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
-<sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="default-vm"/>
-<services xmlns="http://www.geni.net/resources/rspec/3"/>
-<interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-26"/>
-</node>
-<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-9">
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-18"/>
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-19"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
-</link>
-<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-10">
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-20"/>
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-21"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
-</link>
-<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-11">
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-22"/>
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-23"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
-</link>
-<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-12">
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-24"/>
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-25"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
-</link>
-<link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-13">
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-26"/>
-<interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-27"/>
-<site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
-</link>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="manager" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85190" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25410" username="alcheng"/>
+      <emulab:console server="pc5.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-19" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85203" mac_address="0296759ae2bc">
+      <ip address="10.10.1.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-21" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85206" mac_address="02f8320b090c">
+      <ip address="10.10.2.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-23" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85209" mac_address="02bcb13124f1">
+      <ip address="10.10.3.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-25" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85212" mac_address="020b86fd3d58">
+      <ip address="10.10.4.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-27" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85215" mac_address="02ca61ea2238">
+      <ip address="10.10.5.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-0" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85217" mac_address="02f114320187">
+      <ip address="10.10.6.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-2" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85220" mac_address="02f2075bfbf3">
+      <ip address="10.10.7.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-4" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85223" mac_address="028a3514d7ee">
+      <ip address="10.10.8.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-7" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85227" mac_address="02ca7f8b2082">
+      <ip address="10.10.9.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-8" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85229" mac_address="02c4ac537418">
+      <ip address="10.10.10.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-3" hardware_type="pcvm"/>
+    <host name="manager.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker5" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85194" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25414" username="alcheng"/>
+      <emulab:console server="pc5.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-18" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85202" mac_address="02ee5eb9100a">
+      <ip address="10.10.1.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-9" hardware_type="pcvm"/>
+    <host name="worker5.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker1" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85191" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25411" username="alcheng"/>
+      <emulab:console server="vhost5.shared-nodes.emulab-ops.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-20" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85205" mac_address="02c593d9095f">
+      <ip address="10.10.2.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-6" hardware_type="pcvm"/>
+    <host name="worker1.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker2" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc4" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85198" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc4.instageni.wisc.edu" port="25410" username="alcheng"/>
+      <emulab:console server="vhost4.shared-nodes.emulab-ops.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-22" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc4:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85208" mac_address="029be6650297">
+      <ip address="10.10.3.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm4-2" hardware_type="pcvm"/>
+    <host name="worker2.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker3" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc3" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85189" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc3.instageni.wisc.edu" port="25410" username="alcheng"/>
+      <emulab:console server="vhost3.shared-nodes.emulab-ops.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-24" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc3:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85211" mac_address="02975c7c66bf">
+      <ip address="10.10.4.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm3-5" hardware_type="pcvm"/>
+    <host name="worker3.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker4" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85193" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25413" username="alcheng"/>
+      <emulab:console server="vhost5.shared-nodes.emulab-ops.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-26" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85214" mac_address="02d8c0815487">
+      <ip address="10.10.5.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-8" hardware_type="pcvm"/>
+    <host name="worker4.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker6" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85195" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25415" username="alcheng"/>
+      <emulab:console server="pc5.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-1" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85218" mac_address="02283f71f7d6">
+      <ip address="10.10.6.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-10" hardware_type="pcvm"/>
+    <host name="worker6.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker7" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85196" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25416" username="alcheng"/>
+      <emulab:console server="pc5.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-3" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85221" mac_address="02977f095820">
+      <ip address="10.10.7.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-11" hardware_type="pcvm"/>
+    <host name="worker7.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker8" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85197" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25417" username="alcheng"/>
+      <emulab:console server="vhost5.shared-nodes.emulab-ops.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-5" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85224" mac_address="02cbca0e86b9">
+      <ip address="10.10.8.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-12" hardware_type="pcvm"/>
+    <host name="worker8.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker9" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc2" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85199" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc2.instageni.wisc.edu" port="25410" username="alcheng"/>
+      <emulab:console server="vhost2.shared-nodes.emulab-ops.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-9" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc2:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85230" mac_address="0263ce7049cd">
+      <ip address="10.10.10.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm2-5" hardware_type="pcvm"/>
+    <host name="worker9.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="worker10" component_manager_id="urn:publicid:IDN+instageni.wisc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.wisc.edu+node+pc5" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85192" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <emulab:imageable available="true"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="megchen"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="ctony"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="lei"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="matta"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="chuntpun"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="bsohn"/>
+      <login authentication="ssh-keys" hostname="pc5.instageni.wisc.edu" port="25412" username="alcheng"/>
+      <emulab:console server="pc5.instageni.wisc.edu"/>
+    </services>
+    <interface client_id="interface-6" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85226" mac_address="0220f3d79246">
+      <ip address="10.10.9.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm5-7" hardware_type="pcvm"/>
+    <host name="worker10.geni-mini-cbam-10.ch-geni-net.instageni.wisc.edu"/>
+  </node>
+  <link client_id="link-9" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85201">
+    <interface_ref client_id="interface-18" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85202"/>
+    <interface_ref client_id="interface-19" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85203"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-10" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85204">
+    <interface_ref client_id="interface-20" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85205"/>
+    <interface_ref client_id="interface-21" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85206"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-11" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85207" vlantag="272">
+    <interface_ref client_id="interface-22" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc4:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85208"/>
+    <interface_ref client_id="interface-23" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85209"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-12" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85210" vlantag="290">
+    <interface_ref client_id="interface-24" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc3:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85211"/>
+    <interface_ref client_id="interface-25" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85212"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-13" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85213">
+    <interface_ref client_id="interface-26" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85214"/>
+    <interface_ref client_id="interface-27" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85215"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85216">
+    <interface_ref client_id="interface-0" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85217"/>
+    <interface_ref client_id="interface-1" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85218"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85219">
+    <interface_ref client_id="interface-2" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85220"/>
+    <interface_ref client_id="interface-3" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85221"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-2" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85222">
+    <interface_ref client_id="interface-4" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85223"/>
+    <interface_ref client_id="interface-5" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85224"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-3" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85225">
+    <interface_ref client_id="interface-6" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85226"/>
+    <interface_ref client_id="interface-7" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:lo0" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85227"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-4" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85228" vlantag="270">
+    <interface_ref client_id="interface-8" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc5:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85229"/>
+    <interface_ref client_id="interface-9" component_id="urn:publicid:IDN+instageni.wisc.edu+interface+pc2:eth1" sliver_id="urn:publicid:IDN+instageni.wisc.edu+sliver+85230"/>
+    <component_manager name="urn:publicid:IDN+instageni.wisc.edu+authority+cm"/>
+  </link>
+  <rs:site_info xmlns:rs="http://www.protogeni.net/resources/rspec/ext/site-info/1">
+    <rs:location country="" latitude="43.075" longitude="-89.41"/>
+  </rs:site_info>
 </rspec>

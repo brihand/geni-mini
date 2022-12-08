@@ -33,6 +33,7 @@ def main():
     server_port = parse_args()
 
     client_socket = tcp_setup(server_port)
+
     print(client_socket.recv(1024).decode())
     num_of_nodes = input()
     client_socket.send(str(num_of_nodes).encode())
