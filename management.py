@@ -2,7 +2,7 @@ from socket import *
 import threading
 import argparse # for command line parsing
 import logging
-##import time
+import time
 #import statistics # for computing mean
 import csv
 
@@ -60,21 +60,21 @@ def client_handler(client_socket, addr):
     response = client_socket.recv(1024).decode()
     if response == "FrontEnd":
         client_socket.send("Please input number of nodes to split work".encode())
-        lock.acquire()
         num_of_nodes = int(client_socket.recv(1024).decode())
-        lock.release()
+        print("Each task will be splitted between " + str(num_of_nodes) + " workders.")
         while(True):
-            try:
-                hashed_pw = client_socket.recv(1024).decode()
-                task = Task()
-                task.hash = hashed_pw
-                task.seq = 1
-                task.finished = False
-                lock.acquire()
-                tasks.append(task)
-                lock.release()
-            except:
-                break
+
+            hashed_pw = client_socket.recv(1024).decode()
+            print("Got task from front end.")
+            task = Task()
+            task.hash = hashed_pw
+            task.seq = 1
+            task.finished = False
+            task.start = time.time()
+            lock.acquire()
+            tasks.append(task)
+            lock.release()
+
     else:
         while(True):
             lock.acquire()
@@ -89,7 +89,10 @@ def client_handler(client_socket, addr):
                 lock.acquire()
                 if response != "fail":
                     if tasks[int(response[0])].finished == False:
+                        tasks[int(response[0])].duration = time.time() - tasks[int(response[0])].start
+                        print("Task " + response[0] + " finished.")
                         print("Found string:", response[1:])
+                        print("The duration of the task in seconds: " + str(tasks[int(response[0])].duration))
                         tasks[int(response[0])].finished = True
                 lock.release()
             else:
