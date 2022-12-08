@@ -41,16 +41,7 @@ def main():
         print('Please input a md5 hash of 5 character password:')
         hash = input()
         client_socket.send(hash.encode())
-    #with open('tests.csv', newline='') as csvfile:
-    #    csv_reader = csv.reader(csvfile, delimiter=',')
-    #    for row in csv_reader:
-    #        if line_count == 0:
-    #            line_count += 1
-    #            pass
-    #        else:
-    #            time.sleep(random.random())
-    #            client_socket.send(row[1].encode())
-    #            line_count += 1
+
     client_socket.close()
         
         
