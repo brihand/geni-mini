@@ -103,31 +103,28 @@ def main():
     buffer_size = 64000 # max TCP msg size
 
     server_port = parse_args() # parse command line args
-
+    client_socket = tcp_setup(server_port) # server socket setup
     while(True) :
-        client_socket = tcp_setup(server_port) # server socket setup
+        
         # receive input from the management service
         msg = client_socket.recv(buffer_size).decode()
+        task_num = int(msg[0])
+        total_node = int(msg[1])
+        seq_num = int(msg[2])
+        if total_node == 1:
+            result = brute_force(msg)
+        else:
+            result = brute_force_partial(total_node, seq_num, msg[3:])
 
         # md5hash has 32 characters, if >32 then the user has input
         # TODO: When would len(msg) <= 32?
-        if len(msg) > 32:
-            client_socket.close() # Why do we close the socket, then re-connect in the complete_task function? Can't we keep the socket open throughout?
-            total_node = int(msg[0])
-            seq_num = int(msg[1])
-            result = brute_force_partial(total_node, seq_num, msg[2:])
-        else:
-            client_socket.close()
-            result = brute_force(msg)
-
-        client_socket = complete_task(server_port)
+        
 
         if result == 0:
-            client_socket.send(str(result).encode())
+            client_socket.send("fail".encode())
         else:
-            client_socket.send(result.encode())
+            client_socket.send((str(task_num) + result).encode())
 
-        client_socket.close()
 
 if __name__ == "__main__":
     main()

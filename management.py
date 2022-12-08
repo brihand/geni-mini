@@ -1,10 +1,18 @@
 from socket import *
+import threading
 import argparse # for command line parsing
 import logging
 ##import time
 #import statistics # for computing mean
 import csv
 
+class Task: pass
+
+tasks = []
+num_of_nodes = 1
+threads = []
+finished_tasks = 0
+lock = threading.Lock()
 def milliseconds(seconds):
     # convert seconds to milliseconds
     return seconds * 1000
@@ -44,33 +52,73 @@ def write_data_to_csv(mt, rows):
         write.writerows(headers)
         write.writerows(rows)
 
+
+#function that is passed to thread to handle clients
+def client_handler(client_socket, addr):
+    global lock
+    global num_of_nodes
+    global tasks
+    global finished_tasks
+    response = client_socket.recv(1024).decode()
+    if response == "FrontEnd":
+        client_socket.send("Please input number of nodes to split work".encode())
+        lock.acquire()
+        num_of_nodes = int(client_socket.recv(1024).decode())
+        lock.release()
+        while(True):
+            hashed_pw = client_socket.recv(1024).decode()
+            task = Task()
+            task.hash = hashed_pw
+            task.seq = 1
+            task.finished = False
+            lock.acquire()
+            tasks.append(task)
+            lock.release()
+    else:
+        while(True):
+            lock.acquire()
+            if finished_tasks < len(tasks):
+                client_socket.send((str(finished_tasks) + str(num_of_nodes) + str(tasks[finished_tasks].seq) + tasks[finished_tasks].hash).encode())
+                if tasks[finished_tasks].seq < num_of_nodes:
+                    tasks[finished_tasks].seq += 1
+                else:
+                    tasks[finished_tasks].finished = True
+                    finished_tasks += 1
+                lock.release()
+                response = client_socket.recv(1024).decode()
+                lock.acquire()
+                if response != "fail":
+                    if tasks[int(response[0])].finished == False:
+                        print("Found string:", response[1:])
+                        tasks[int(response[0])].finished = True
+                lock.release()
+            else:
+                lock.release()
+    
+
+                
+
+
+
+
+
+
 def main():
     logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO) # logging configuration
     TPUT_MSG_SIZE = 1
     buffer_size = TPUT_MSG_SIZE + 10000
 
     server_port, hashed_pw, num_nodes = parse_args()
-
+    
     server_socket = tcp_setup(server_port)
-    count = 1
-    while(True):
+    
+    for i in range(5):
         connection_socket, addr = server_socket.accept()
         logging.info("New client (" + str(addr) + ") attached")
-        response = connection_socket.recv(1024).decode()
-        # if user wants multiple workers to crack the same password(evenly distributed)
-        if num_nodes > 1:
-            if count <= num_nodes:
-                if response == "ready":
-                    connection_socket.send((str(num_nodes) + str(count) + "594f803b380a41396ed63dca39503542").encode())
-                    count += 1
-                else:
-                    print("Found string:", response)
-        # if user wants only one worker to crack the whole password
-        elif num_nodes <= 1:
-            if response == "ready":
-                connection_socket.send("594f803b380a41396ed63dca39503542".encode())
-            else:
-                print("Found string:", response)
+        thread_a =threading.Thread(target=client_handler, args=(connection_socket,addr))
+        threads.append(thread_a)
+        thread_a.start()
+        
     server_socket.close()
     logging.info("Connection closed")
 
