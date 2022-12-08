@@ -3,7 +3,7 @@
 import hashlib
 import csv
 import random
-import string 
+import string
 
 
 #PLAINTXTS = ['aaaaa','bbbbb','AAAAA','aAaAa','zzzZZ','abcde']
@@ -14,20 +14,20 @@ def gen_single_random_plaintext():
 
     rand = string.ascii_letters
     random_plain = ''.join(random.choice(rand) for i in range(5))
-    
+
     return random_plain
 
 def gen_multi_random_plaintext(size):
 
     for i in range(size):
         PLAINTXTS.append(gen_single_random_plaintext())
-    
+
     #print(PLAINTXTS)
 
 def gen_hash_pairs():
 
     #init md5 hash function
-    md5 = hashlib.md5()
+    # md5 = hashlib.md5()
 
     hashes = []
     for p in PLAINTXTS:
@@ -62,4 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
