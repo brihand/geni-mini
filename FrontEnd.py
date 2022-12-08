@@ -43,6 +43,7 @@ def main():
 
         if hash == 'exit':
             client_socket.close()
+            break
 
         client_socket.send(hash.encode())
 
