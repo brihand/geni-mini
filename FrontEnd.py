@@ -20,7 +20,7 @@ def parse_args():
 
 def tcp_setup(server_port):
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(('localhost', server_port))
+    client_socket.connect(('172.17.2.1', server_port))
     logging.info("The front end is connected.")
     client_socket.send("FrontEnd".encode())
     return client_socket
@@ -33,11 +33,14 @@ def main():
     server_port = parse_args()
 
     client_socket = tcp_setup(server_port)
-    #line_count = 0
+
     print(client_socket.recv(1024).decode())
-    client_socket.send(input().encode())
+    num_of_nodes = input()
+    client_socket.send(str(num_of_nodes).encode())
     while(True):
-        client_socket.send(input("Please input a md5 hash of 5 character password:").encode())
+        print('Please input a md5 hash of 5 character password:')
+        hash = input()
+        client_socket.send(hash.encode())
     #with open('tests.csv', newline='') as csvfile:
     #    csv_reader = csv.reader(csvfile, delimiter=',')
     #    for row in csv_reader:

@@ -22,7 +22,7 @@ def parse_args():
 
 def tcp_setup(server_port):
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(('localhost', server_port))
+    client_socket.connect(('172.17.2.1', server_port))
     logging.info("The worker is ready to work")
     client_socket.send("ready".encode())
     return client_socket
@@ -39,7 +39,7 @@ def brute_force(password):
             print("Found string:", found)
 
             return found
-
+    print("No password found.")
     return 0
 
 def divide_work(total, seq):
@@ -102,9 +102,13 @@ def main():
         
         # receive input from the management service
         msg = client_socket.recv(buffer_size).decode()
+        print("This worker got a task.")
         task_num = int(msg[0])
         total_node = int(msg[1])
-        seq_num = int(msg[2])
+        seq_num = int(msg[2]) - 1
+        print("Task number: " + msg[0])
+        print("Number of worker; " + msg[1])
+        print("Seq number: " + msg[2])
         if total_node == 1:
             result = brute_force(msg[3:])
         else:
