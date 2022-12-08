@@ -20,7 +20,7 @@ def parse_args():
 
 def tcp_setup(server_port):
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(('localhost', server_port))
+    client_socket.connect(('172.17.2.1', server_port))
     logging.info("The front end is connected.")
     client_socket.send("FrontEnd".encode())
     return client_socket
@@ -35,6 +35,7 @@ def main():
     client_socket = tcp_setup(server_port)
     line_count = 0
     print(client_socket.recv(1024).decode())
+<<<<<<< Updated upstream
     client_socket.send(input().encode())
     with open('tests.csv', newline='') as csvfile:
         csv_reader = csv.reader(csvfile, delimiter=',')
@@ -46,6 +47,23 @@ def main():
                 time.sleep(random.random())
                 client_socket.send(row[1].encode())
                 line_count += 1
+=======
+    client_socket.send(str(input()).encode())
+    while(True):
+        print('Please input a md5 hash of 5 character password:')
+        hash = input()
+        client_socket.send(hash.encode())
+    #with open('tests.csv', newline='') as csvfile:
+    #    csv_reader = csv.reader(csvfile, delimiter=',')
+    #    for row in csv_reader:
+    #        if line_count == 0:
+    #            line_count += 1
+    #            pass
+    #        else:
+    #            time.sleep(random.random())
+    #            client_socket.send(row[1].encode())
+    #            line_count += 1
+>>>>>>> Stashed changes
     client_socket.close()
         
         

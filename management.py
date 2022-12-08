@@ -35,7 +35,7 @@ def parse_args():
 def tcp_setup(server_port):
     # Set up connection with the server
     server_socket = socket(AF_INET, SOCK_STREAM)
-    server_socket.bind(('localhost', server_port))
+    server_socket.bind(('172.17.2.1', server_port))
     #logging.info("[TCP Setup] Client connection attempted")
     server_socket.listen(10)
     return server_socket

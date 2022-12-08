@@ -22,7 +22,7 @@ def parse_args():
 
 def tcp_setup(server_port):
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(('localhost', server_port))
+    client_socket.connect(('172.17.2.1', server_port))
     logging.info("The worker is ready to work")
     client_socket.send("ready".encode())
     return client_socket
