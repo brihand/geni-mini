@@ -1,10 +1,18 @@
 from socket import *
+import threading
 import argparse # for command line parsing
 import logging
 ##import time
 #import statistics # for computing mean
 import csv
 
+class Task: pass
+
+tasks = []
+num_of_nodes = 1
+threads = []
+finished_tasks = 0
+lock = threading.Lock()
 def milliseconds(seconds):
     # convert seconds to milliseconds
     return seconds * 1000
@@ -17,18 +25,17 @@ def parse_args():
 
     # add arguments to the parser
     parser.add_argument("server_port")
-    parser.add_argument("hashed_pw") # hashed pw
 
     # parse the arguments
     args = parser.parse_args()
     logging.info(args)
 
-    return int(args.server_port), args.hashed_pw
+    return int(args.server_port)
 
 def tcp_setup(server_port):
     # Set up connection with the server
     server_socket = socket(AF_INET, SOCK_STREAM)
-    server_socket.bind(("172.17.2.1", server_port))
+    server_socket.bind(('localhost', server_port))
     #logging.info("[TCP Setup] Client connection attempted")
     server_socket.listen(10)
     return server_socket
@@ -43,26 +50,75 @@ def write_data_to_csv(mt, rows):
         write.writerows(headers)
         write.writerows(rows)
 
+
+#function that is passed to thread to handle clients
+def client_handler(client_socket, addr):
+    global lock
+    global num_of_nodes
+    global tasks
+    global finished_tasks
+    response = client_socket.recv(1024).decode()
+    if response == "FrontEnd":
+        client_socket.send("Please input number of nodes to split work".encode())
+        lock.acquire()
+        num_of_nodes = int(client_socket.recv(1024).decode())
+        lock.release()
+        while(True):
+            try:
+                hashed_pw = client_socket.recv(1024).decode()
+                task = Task()
+                task.hash = hashed_pw
+                task.seq = 1
+                task.finished = False
+                lock.acquire()
+                tasks.append(task)
+                lock.release()
+            except:
+                break
+    else:
+        while(True):
+            lock.acquire()
+            if finished_tasks < len(tasks):
+                client_socket.send((str(finished_tasks) + str(num_of_nodes) + str(tasks[finished_tasks].seq) + tasks[finished_tasks].hash).encode())
+                if tasks[finished_tasks].seq < num_of_nodes:
+                    tasks[finished_tasks].seq += 1
+                else:
+                    finished_tasks += 1
+                lock.release()
+                response = client_socket.recv(1024).decode()
+                lock.acquire()
+                if response != "fail":
+                    if tasks[int(response[0])].finished == False:
+                        print("Found string:", response[1:])
+                        tasks[int(response[0])].finished = True
+                lock.release()
+            else:
+                lock.release()
+    
+
+                
+
+
+
+
+
+
 def main():
     logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO) # logging configuration
     TPUT_MSG_SIZE = 1
     buffer_size = TPUT_MSG_SIZE + 10000
 
-    # Command: python3 client.py csa1.bu.edu 58002
-    # Command: python3 client.py localhost 58002
-    server_port, hashed_pw = parse_args()
-
-
+    server_port = parse_args()
+    
     server_socket = tcp_setup(server_port)
-
+    
     while(True):
         connection_socket, addr = server_socket.accept()
         logging.info("New client (" + str(addr) + ") attached")
-        response = connection_socket.recv(1024)
-        if response == "ready":
-            connection_socket.send("594f803b380a41396ed63dca39503542")
-        else:
-            print("Found string:", response)
+        thread_a =threading.Thread(target=client_handler, args=(connection_socket,addr))
+        threads.append(thread_a)
+        thread_a.start()
+        
     server_socket.close()
     logging.info("Connection closed")
 

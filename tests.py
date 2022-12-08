@@ -31,6 +31,7 @@ def gen_hash_pairs():
 
     hashes = []
     for p in PLAINTXTS:
+        md5 = hashlib.md5()
         md5.update(p.encode('utf-8'))
         pair = [p, md5.hexdigest()]
         hashes.append(pair)
