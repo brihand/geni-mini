@@ -2,7 +2,7 @@ from socket import *
 import threading
 import argparse # for command line parsing
 import logging
-##import time
+import time
 #import statistics # for computing mean
 import csv
 
@@ -70,6 +70,7 @@ def client_handler(client_socket, addr):
                 task.hash = hashed_pw
                 task.seq = 1
                 task.finished = False
+                task.start = time.time_ns()
                 lock.acquire()
                 tasks.append(task)
                 lock.release()
@@ -90,6 +91,8 @@ def client_handler(client_socket, addr):
                 if response != "fail":
                     if tasks[int(response[0])].finished == False:
                         print("Found string:", response[1:])
+                        tasks[int(response[0])].duration = tasks[int(response[0])].start - time.time_ns()
+                        print("The duration of the task in nanosecond: " + str(tasks[int(response[0])].duration))
                         tasks[int(response[0])].finished = True
                 lock.release()
             else:

@@ -33,19 +33,21 @@ def main():
     server_port = parse_args()
 
     client_socket = tcp_setup(server_port)
-    line_count = 0
+    #line_count = 0
     print(client_socket.recv(1024).decode())
     client_socket.send(input().encode())
-    with open('tests.csv', newline='') as csvfile:
-        csv_reader = csv.reader(csvfile, delimiter=',')
-        for row in csv_reader:
-            if line_count == 0:
-                line_count += 1
-                pass
-            else:
-                time.sleep(random.random())
-                client_socket.send(row[1].encode())
-                line_count += 1
+    while(True):
+        client_socket.send(input("Please input a md5 hash of 5 character password:").encode())
+    #with open('tests.csv', newline='') as csvfile:
+    #    csv_reader = csv.reader(csvfile, delimiter=',')
+    #    for row in csv_reader:
+    #        if line_count == 0:
+    #            line_count += 1
+    #            pass
+    #        else:
+    #            time.sleep(random.random())
+    #            client_socket.send(row[1].encode())
+    #            line_count += 1
     client_socket.close()
         
         
