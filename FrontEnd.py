@@ -40,11 +40,11 @@ def main():
     while(True):
         print('Please input a md5 hash of 5 character password:')
         hash = input()
-        client_socket.send(hash.encode())
 
-    client_socket.close()
-        
-        
+        if hash == 'exit':
+            client_socket.close()
+
+        client_socket.send(hash.encode())
 
 
 if __name__ == "__main__":
