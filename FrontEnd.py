@@ -34,6 +34,8 @@ def main():
 
     client_socket = tcp_setup(server_port)
     line_count = 0
+    print(client_socket.recv(1024).decode())
+    client_socket.send(input())
     with open('tests.csv', newline='') as csvfile:
         csv_reader = csv.reader(csvfile, delimiter=',')
         for row in csv_reader:
@@ -42,7 +44,7 @@ def main():
                 pass
             else:
                 time.sleep(random.random())
-                client_socket.sent(row[1].encode())
+                client_socket.send(row[1].encode())
                 line_count += 1
     client_socket.close()
         
