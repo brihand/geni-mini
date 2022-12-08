@@ -106,14 +106,13 @@ def main():
         total_node = int(msg[1])
         seq_num = int(msg[2])
         if total_node == 1:
-            result = brute_force(msg)
+            result = brute_force(msg[3:])
         else:
             result = brute_force_partial(total_node, seq_num, msg[3:])
 
         # md5hash has 32 characters, if >32 then the user has input
         # TODO: When would len(msg) <= 32?
         
-
         if result == 0:
             client_socket.send("fail".encode())
         else:

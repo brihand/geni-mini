@@ -64,14 +64,17 @@ def client_handler(client_socket, addr):
         num_of_nodes = int(client_socket.recv(1024).decode())
         lock.release()
         while(True):
-            hashed_pw = client_socket.recv(1024).decode()
-            task = Task()
-            task.hash = hashed_pw
-            task.seq = 1
-            task.finished = False
-            lock.acquire()
-            tasks.append(task)
-            lock.release()
+            try:
+                hashed_pw = client_socket.recv(1024).decode()
+                task = Task()
+                task.hash = hashed_pw
+                task.seq = 1
+                task.finished = False
+                lock.acquire()
+                tasks.append(task)
+                lock.release()
+            except:
+                break
     else:
         while(True):
             lock.acquire()
@@ -109,7 +112,7 @@ def main():
     
     server_socket = tcp_setup(server_port)
     
-    for i in range(5):
+    while(True):
         connection_socket, addr = server_socket.accept()
         logging.info("New client (" + str(addr) + ") attached")
         thread_a =threading.Thread(target=client_handler, args=(connection_socket,addr))

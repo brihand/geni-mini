@@ -35,7 +35,7 @@ def main():
     client_socket = tcp_setup(server_port)
     line_count = 0
     print(client_socket.recv(1024).decode())
-    client_socket.send(input())
+    client_socket.send(input().encode())
     with open('tests.csv', newline='') as csvfile:
         csv_reader = csv.reader(csvfile, delimiter=',')
         for row in csv_reader:

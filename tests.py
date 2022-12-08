@@ -6,13 +6,11 @@ import csv
 PLAINTXTS = ['aaaaa','bbbbb','AAAAA','aAaAa','zzzZZ','abcde']
 FIELDS = ['plaintext', 'hashed_val']
 
-def gen_hash_pairs():
-
-    #init md5 hash function
-    md5 = hashlib.md5()
+def gen_hash_pairs():    
 
     hashes = []
     for p in PLAINTXTS:
+        md5 = hashlib.md5()
         md5.update(p.encode('utf-8'))
         pair = [p, md5.hexdigest()]
         hashes.append(pair)
