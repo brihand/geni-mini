@@ -1,9 +1,9 @@
 from socket import *
 import argparse
 import logging
-import hashlib
-import itertools, string
-import math
+import csv
+import time
+import random
 
 def parse_args():
     # create parser
@@ -25,12 +25,6 @@ def tcp_setup(server_port):
     client_socket.send("FrontEnd".encode())
     return client_socket
 
-def complete_task(server_port):
-    client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(('localhost', server_port))
-    logging.info("The worker has completed the work")
-    return client_socket
-
 
 
 def main():
@@ -39,8 +33,18 @@ def main():
     server_port = parse_args()
 
     client_socket = tcp_setup(server_port)
-    while(True):
-        
+    line_count = 0
+    with open('tests.csv', newline='') as csvfile:
+        csv_reader = csv.reader(csvfile, delimiter=',')
+        for row in csv_reader:
+            if line_count == 0:
+                line_count += 1
+                pass
+            else:
+                time.sleep(random.random())
+                client_socket.sent(row[1].encode())
+                line_count += 1
+    client_socket.close()
         
         
 

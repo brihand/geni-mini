@@ -25,14 +25,12 @@ def parse_args():
 
     # add arguments to the parser
     parser.add_argument("server_port")
-    parser.add_argument("hashed_pw") # hashed pw
-    parser.add_argument("num_nodes") # number of worker nodes used to crack
 
     # parse the arguments
     args = parser.parse_args()
     logging.info(args)
 
-    return int(args.server_port), args.hashed_pw, int(args.num_nodes)
+    return int(args.server_port)
 
 def tcp_setup(server_port):
     # Set up connection with the server
@@ -82,7 +80,6 @@ def client_handler(client_socket, addr):
                 if tasks[finished_tasks].seq < num_of_nodes:
                     tasks[finished_tasks].seq += 1
                 else:
-                    tasks[finished_tasks].finished = True
                     finished_tasks += 1
                 lock.release()
                 response = client_socket.recv(1024).decode()
@@ -108,7 +105,7 @@ def main():
     TPUT_MSG_SIZE = 1
     buffer_size = TPUT_MSG_SIZE + 10000
 
-    server_port, hashed_pw, num_nodes = parse_args()
+    server_port = parse_args()
     
     server_socket = tcp_setup(server_port)
     

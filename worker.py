@@ -27,12 +27,6 @@ def tcp_setup(server_port):
     client_socket.send("ready".encode())
     return client_socket
 
-def complete_task(server_port):
-    client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(('localhost', server_port))
-    logging.info("The worker has completed the work")
-    return client_socket
-
 def brute_force(password):
     # password = the hashed password we want to crack
 
