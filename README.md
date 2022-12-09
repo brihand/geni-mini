@@ -18,8 +18,10 @@ Our code runs with the following steps:
 ## Set up the management node.
 2. ssh into the node with the command `ssh -i <local ssh key file> <username>@<hostname> -p <port_number>`. For example: `ssh -i ~/.ssh/id_geni_ssh_rsa megchen@pc2.instageni.wisc.edu -p 25010`.
 3. Run management.py code: `python3 ../alcheng/management.py <management_port_number>`.
-4. Set up the worker nodes. For all worker nodes (worker1 - worker 4), do the following:
-ssh into each worker node with the command `ssh -i <local ssh key file> <username>@<hostname> -p <port_number>`.
+
+## Set up the worker nodes.
+For all worker nodes (worker1 - worker 4), do the following:
+4. ssh into each worker node with the command `ssh -i <local ssh key file> <username>@<hostname> -p <port_number>`.
 5. Run worker.py code: `python ../alcheng/worker.py <worker_port_number>`.
 
 ## Input hash into the front end (i.e. worker5).
