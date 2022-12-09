@@ -35,7 +35,7 @@ def parse_args():
 def tcp_setup(server_port):
     # Set up connection with the server
     server_socket = socket(AF_INET, SOCK_STREAM)
-    server_socket.bind(('localhost', server_port))
+    server_socket.bind(('172.17.2.1', server_port))
     #logging.info("[TCP Setup] Client connection attempted")
     server_socket.listen(10)
     return server_socket
@@ -60,22 +60,21 @@ def client_handler(client_socket, addr):
     response = client_socket.recv(1024).decode()
     if response == "FrontEnd":
         client_socket.send("Please input number of nodes to split work".encode())
-        lock.acquire()
         num_of_nodes = int(client_socket.recv(1024).decode())
-        lock.release()
+        print("Each task will be splitted between " + str(num_of_nodes) + " workders.")
         while(True):
-            try:
-                hashed_pw = client_socket.recv(1024).decode()
-                task = Task()
-                task.hash = hashed_pw
-                task.seq = 1
-                task.finished = False
-                task.start = time.time_ns()
-                lock.acquire()
-                tasks.append(task)
-                lock.release()
-            except:
-                break
+
+            hashed_pw = client_socket.recv(1024).decode()
+            print("Got task from front end.")
+            task = Task()
+            task.hash = hashed_pw
+            task.seq = 1
+            task.finished = False
+            task.start = time.time()
+            lock.acquire()
+            tasks.append(task)
+            lock.release()
+
     else:
         while(True):
             lock.acquire()
@@ -90,9 +89,10 @@ def client_handler(client_socket, addr):
                 lock.acquire()
                 if response != "fail":
                     if tasks[int(response[0])].finished == False:
+                        tasks[int(response[0])].duration = time.time() - tasks[int(response[0])].start
+                        print("Task " + response[0] + " finished.")
                         print("Found string:", response[1:])
-                        tasks[int(response[0])].duration = tasks[int(response[0])].start - time.time_ns()
-                        print("The duration of the task in nanosecond: " + str(tasks[int(response[0])].duration))
+                        print("The duration of the task in seconds: " + str(tasks[int(response[0])].duration))
                         tasks[int(response[0])].finished = True
                 lock.release()
             else:
